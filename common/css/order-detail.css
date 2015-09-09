@@ -1,0 +1,223 @@
+/* 订单详情 */
+.wrap-order-detail {
+    position: relative;
+    top: 16px;
+    margin: 0 0 130px;
+}
+
+.wrap-order-detail .bg-white {
+    padding: 0 24px;
+    background: white;
+    border-top: #f3f3f3 1px solid;
+}
+
+.wrap-order-detail .item {
+    padding: 8px 0;
+    border-bottom: #f3f3f3 1px solid;
+}
+
+.wrap-order-detail .row {
+    display: -webkit-box;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 4px 0;
+}
+
+.wrap-order-detail .row .key {
+    width: 96px;
+}
+
+.wrap-order-detail .row .value {
+    -webkit-box-flex: 1;
+    color: #4d4d4d;
+}
+
+.wrap-order-detail .coupon-price {
+    color: #41a4f4;
+}
+
+.wrap-order-detail .item-service .body2 {
+    margin-top: 8px;
+}
+
+.wrap-order-detail .money {
+    color: #ff7e2e;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.wrap-order-detail .item-supplier a {
+    display: block;
+}
+
+.wrap-order-detail .no-bb {
+    border-bottom: none;
+}
+
+/* 选择支付方式 */
+.wrap-select {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-top: 8px;
+    box-shadow: 0 0 10px #000000;
+    background: #f8f8f8;
+}
+
+.item-select {
+    position: relative;
+    line-height: 20px;
+    margin: 8px 24px 0;
+}
+
+.item-select .cb {
+    height: 20px;
+    overflow: hidden;
+}
+
+.item-select .cb span i {
+    color: #ff7e2e;
+}
+
+.item-select .pay-balance {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.item-select .pay-balance span {
+    color: #ff7e2e;
+}
+
+.item-select .pay-balance i {
+    font-size: 16px;
+}
+
+.checkbox {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.checkbox input[type=checkbox] {
+    display: none;
+}
+
+.checkbox label {
+    display: block;
+}
+
+.checkbox input[type=checkbox] + label > span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 2px 8px 0 0;
+    vertical-align: top;
+    /*background: url("../../images/untick.png") center no-repeat;*/
+    /*background-size: 20px;*/
+    border: #989898 1px solid;
+}
+
+.checkbox input[type=checkbox]:checked + label > span {
+    /*background: url("../../images/tick.png") center no-repeat;*/
+    /*background-size: 20px;*/
+    border: #ff7e2e 1px solid;
+    background: #ff7e2e;
+}
+
+.cash-account .cb .balance:before {
+    content: '(余额￥';
+}
+
+.cash-account .cb .balance:after {
+    content: ')';
+}
+
+.wrap-select .btns {
+    height: auto;
+    padding: 12px 20px 14px 24px;
+    overflow: hidden;
+}
+
+.wrap-select .btns .btn-pay {
+    width: 64%;
+}
+
+.wrap-select .btns .btn-close {
+    width: 32%;
+}
+
+.wrap-btns {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: #f8f8f8;
+    box-shadow: 0 0 10px #000000;
+}
+
+.wrap-btns .btns {
+    margin: 16px 24px;
+}
+
+.wrap-btns .btns .btn-confirm {
+    width: 64%;
+}
+
+.wrap-btns .btns .btn-complain {
+    width: 32%;
+}
+
+/* refund */
+.wrap-refund {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: #f8f8f8;
+    box-shadow: 0 0 10px #000000;
+}
+
+.wrap-refund .unfill {
+    margin: 16px 24px;
+}
+
+.wrap-refund .unfill .tip-refund {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.wrap-refund .filled {
+    margin: 24px;
+}
+
+.wrap-refund .filled .btn-mod {
+    width: 160px;
+}
+.notice {
+    padding: 18px 0px;
+    background: #fff;
+}
+
+.notice .subhead2 {
+    margin-bottom:5px;
+}
+
+.notice .body2:before {
+    content: '·';
+    float:left;
+}
+
+.notice .body2 span {
+    display:block;
+    overflow:hidden;
+}
+
+.service-know{
+    padding-top:15px;
+    color:#000;
+    font-weight:normal;
+    font-size:18px;
+    text-align:center;
+}

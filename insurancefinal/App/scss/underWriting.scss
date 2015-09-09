@@ -1,0 +1,349 @@
+@charset"utf-8";
+@import"com";
+@import"hd";
+.items {
+    padding: 0 16px;
+    background-color: white;
+}
+.item_info{
+    .itemInput{
+        &:last-child{
+            border:none;
+        }
+    }
+}
+
+.itemH{
+    .itemInput{
+        height:40px;
+        line-height:40px;
+        .key{
+            height:40px;
+        }
+        .value{
+            height:40px;
+            text-align:right;
+        }
+    }
+    background:#f1f1f1;
+}
+.orderInfo{
+    padding:10px 16px;
+    h3{
+        line-height:24px;
+        font-size:15px;
+        color:#4c4c4c;
+    }
+    p{
+        line-height:18px;
+        font-size:14px;
+        color:#989898;
+    }
+}
+.item_info{
+    .key{
+        width:auto;
+        color:#4c4c4c;
+    }
+    .value{
+        line-height:48px;
+        text-align:right;
+    }
+    .f_org{
+        color:#ff7e2e;
+    }
+}
+
+.items_h{
+    background:#FFF2E1;
+    .itemInput{
+        .atc,.ifos,.pri{
+            line-height:40px;
+        }
+        height:40px;
+        border:none;
+        .key,.val{
+            height:40px;
+            line-height:40px;
+        }
+    }
+}
+.reUpload {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    z-index: 1;
+    .content {
+        position: absolute;
+        width: 254px;
+        left: 50%;
+        top: 50%;
+        height: 310px;
+        margin-top: -155px;
+        margin-left: -127px;
+        background: #ffffff;
+        padding: 4px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        .imgBox {
+            width: 100%;
+            height: 240px;
+            padding: 5px 0;
+            background-color: #f1f1f1;
+            position:relative;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;  
+            position: absolute;  
+            top: 50%; left: 50%;  
+            -webkit-transform: translate(-50%,-50%);  
+            -ms-transform: translate(-50%,-50%);  
+            transform: translate(-50%,-50%);
+            }
+        }
+        .action {
+            padding: 5px 42px 12px;
+            .btn {
+                border-radius: 36px;
+                height: 36px;
+                line-height: 36px;
+                color: #ff7e2e;
+                border: 1px solid #ff7e2e;
+            }
+        }
+    }
+}
+
+.cardInfotips{
+    padding:0;
+    border-bottom: #e6e6e6 1px solid;
+}
+
+.cardInfoBody{
+    background:white;
+}
+
+.tips{
+    padding:6px 16px;
+    font-size:12px;
+    color:#4c4c4c;
+    line-height:20px;
+    text-align:center;
+    background-color:#f1f1f1;
+}
+
+.atc,
+.ifos,
+.pri{
+    line-height:48px;
+    overflow:hidden;
+}
+
+.ifo{
+    line-height: 16px;
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+.atc{
+    width:22%;
+}
+.ifos,
+.ifo{
+    width:45%;
+    text-align:center;
+}
+.pri{
+    text-align:right;
+    width:35%; 
+    @extend .fbl;
+}
+
+.val{
+    @extend .fbl;
+    line-height:48px;
+    padding-left:24px;
+    overflow:hidden;
+}
+
+.redbag{
+    border-top:1px solid white;
+}
+
+.fb{
+    display: -webkit-box;
+}
+
+.fbl{
+    -webkit-box-flex: 1;
+}
+
+.itemInput .f_bk{
+    color:#4c4c4c;
+}
+
+.itemInput .f_dk{
+    color:#989898;
+}
+
+.hbloding{
+    padding:0 10px;
+    background:#4c4c4c;
+    height:56px;
+    @extend .fb;
+    .left{
+        width:45px;
+        text-align:center;
+        line-height:56px;
+        img{
+            height: 32px;
+            width: 32px;
+            vertical-align: middle;
+        }
+    }
+    .right{
+        padding-top:12px;
+        @extend .fbl;
+        h3{
+            font-size:14px;
+            color:white;
+            line-height:20px;
+            span{
+                color:#ff7f2f;
+            }
+        }
+    }
+}
+
+.hberror{
+    padding:0 16px;
+    background:#ff7f2f;
+    height:96px;
+    @extend .fb;
+    .left{
+        width:80px;
+        text-align:center;
+        line-height:96px;
+        img{
+            height: 66px;
+            width: 66px;
+            vertical-align: middle;
+        }
+    }
+    .right{
+        padding-top:20px;
+        padding-left:5px;
+        @extend .fbl;
+        h3{
+            font-size:18px;
+            color:white;
+            line-height:24px;
+        }
+        p{
+            color:yellow;
+            line-height:16px;
+        }
+    }
+}
+
+.hberrtip{
+    p{
+        padding:15px 0;
+        border-bottom:#e6e6e6 1px solid;
+    }
+    .action{
+        padding:15px 0;
+        //border-bottom:#e6e6e6 1px solid;
+    }
+}
+
+
+.sendPrvice {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -2px 24px 0px #ababab;
+    .top {
+        background: #4c4c4c;
+        height: 56px;;
+        display: -webkit-box;
+        .left {
+            -webkit-box-flex: 1;
+            .box {
+                padding: 8px 5px 0 24px;
+                .f_12{
+                    font-size:12px;
+                    color:#989898;
+                }
+                span{
+                    color:white;
+                }
+                .price {
+                    font-size: 18px;
+                    color: #ff7f2f;
+                    line-height: 24px;
+                }
+            }
+        }
+        .right {
+            .action {
+                padding:0;
+                .btn{
+                    height:56px;
+                    line-height:56px;
+                }
+            }
+            width:30%;
+        }
+    }
+    .bottom {
+        display:none;
+        height: 32px;
+        line-height: 32px;
+        overflow: hidden;
+        text-align: center;
+        background: #e8e8e8;
+        color: #ff7f2f;
+        font-size: 12px;
+    }
+}
+
+.orderdetail{
+    padding-bottom:90px;
+    .action{
+        padding: 15px 16px 30px;
+    }
+}
+
+.addressItem{
+    padding:10px 0;
+    height:auto;
+    .key{
+        height:auto;
+    }
+    .value{
+        word-wrap: break-word;
+        white-space: normal;
+        line-height:20px;
+        color:#4c4c4c;
+    }
+}
+
+.items_ofs{
+    .ifos,.ifo{
+        width:auto;
+        text-align:left;
+        -webkit-box-flex: 1;
+        padding-left:24px;
+    }
+}
+

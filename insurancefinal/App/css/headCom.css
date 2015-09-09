@@ -1,0 +1,39 @@
+/* item arrow */
+.pbox {
+  padding: 16px;
+}
+
+.fb, .headChoose ul {
+  display: -webkit-box;
+}
+
+.fbl {
+  -webkit-box-flex: 1;
+}
+
+.headChoose {
+  background: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.headChoose ul li {
+  width: 33.33%;
+  text-align: center;
+  line-height: 32px;
+  box-sizing: border-box;
+  border: 1px solid #ff7f2f;
+  border-right: 0;
+  color: #ff7f2f;
+  position: relative;
+}
+.headChoose ul li:first-child {
+  border-radius: 10px 0 0 10px;
+}
+.headChoose ul li:last-child {
+  border-radius: 0 10px 10px 0;
+  border-right: 1px solid #ff7f2f;
+}
+.headChoose ul li.active {
+  color: white;
+  background: #ff7f2f;
+}

@@ -1,0 +1,90 @@
+.wrap-select-coupon {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-top: 16px;
+    background: #f8f8f8;
+    box-shadow: 0 -1px 10px black;
+    z-index: 2;
+}
+
+.wrap-select-coupon .item {
+    padding: 10px 8px;
+    margin: 0 16px;
+}
+
+.wrap-select-coupon .service {
+    border-bottom: #f0f0f0 1px solid;
+}
+
+.wrap-select-coupon .price {
+    font-size: 16px;
+    color: #ff7e2e;
+}
+
+.wrap-select-coupon .coupon-price {
+    font-size: 14px;
+    color: #3eb8ff;
+}
+
+.wrap-select-coupon .list-coupon {
+    position: relative;
+    margin: 0;
+    padding: 0 24px;
+    line-height: 40px;
+    background: #ffffff;
+}
+
+.wrap-select-coupon .list-coupon:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    right: 24px;
+    top: 0;
+    background: url("../images/forward.png") center no-repeat;
+    background-size: 10px;
+}
+
+.wrap-select-coupon .list-coupon select {
+    height: 40px;
+}
+
+.wrap-select-coupon .bottom {
+    height: 44px;
+    margin-top: 16px;
+    border-top: #f0f0f0 1px solid;
+    background: #ffffff;
+}
+
+.wrap-select-coupon .order-money {
+    width: 66%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.wrap-select-coupon .order-money span {
+    margin-left: 8px;
+    color: #ff7e2e;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.wrap-select-coupon .order-money span:before {
+    content: '￥';
+}
+
+.wrap-select-coupon .wrap-btn {
+    width: 34%;
+    border-left: #f0f0f0 1px solid;
+}
+
+.wrap-select-coupon .btn-order {
+    width: 100%;
+    height: 44px;
+    color: #ff7e2e;
+}
+
+/* ykcz */

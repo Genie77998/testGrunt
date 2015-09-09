@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-在线车险</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/underWriting.css" />
+</head>
+
+<body ontouchstart="" class="cardInfoBody">
+    <div class="container" id="mainBox"></div>
+    <script type="text/html" id="underWritingTmpl">
+        {{if data.status == 0}}
+        <div class="hbloding">
+            <div class="left">
+               <img src="images/lock.png" /> 
+            </div>
+            <div class="right">
+                <h3>正在等待<span>{{data.baoxianCompanyName}}</span>核保</h3>
+                <p class="caption">预计将于{{data.successTime}}前完成</p>
+            </div>
+        </div>
+        {{else}}
+        <div class="insurfo">
+            <div class="pics"><img src="{{data.baoxianCompanyPic}}" height="30" width="80" ></div>
+            <div class="infos">
+                <h3 class="body1">{{data.baoxianCompanyName}}</h3>
+                <p class="caption">{{data.baoxianCompanyRemark}}</p>
+            </div>
+        </div>
+        {{/if}}
+        {{if data.status == 1}}
+            <div class="redbag">
+                <img src="images/redbag.png" alt="">核保即送100元保险抵用券，投保成功还可得投保礼包
+            </div>
+        {{/if}}
+        {{if data.status == -1}}
+            {{if data.failType != 0}}
+                <div class="hberror">
+                    <div class="left"><img src="images/gth.png" ></div>
+                    <div class="right">
+                        <h3>核保失败</h3>
+                        <p>根据您提供的信息，{{data.baoxianCompanyName}}无法提供精准报价</p>
+                    </div>
+                </div>
+                <div class="items item_info">
+                    <div class="hberrtip body2">
+                        <p>核保失败原因：{{if data.failType == 1}}身份证图片不清晰{{else if data.failType == 2}}行驶证图片不清晰{{else if data.failType == 3}}{{data.message}}{{/if}}</p>
+                        {{if data.failType == 1}}
+                            <div class="action">
+                                <input type="button" class="btn btn-next" name="gotoUpdateCarda" value="更正车主身份证信息" />
+                            </div>
+                        {{else if data.failType == 2}}
+                            <div class="action">
+                                <input type="button" class="btn btn-next" name="gotoUpdateCardb" value="更正车主行驶证信息" />
+                            </div>
+                        {{else}}
+                            <div class="action">
+                                <input type="button" class="btn btn-next" name="gotoNewOrder" value="重新报价" />
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+        {{if data.payStatus!=1}}
+            <div class="items item_info itemH">
+                <div class="itemInput">
+                    <div class="key f_dk">核保信息</div>
+                </div>
+            </div>
+            <div class="items item_info">
+                <div class="itemInput">
+                    <div class="key">投保城市</div>
+                    <div class="value">
+                        <input type="text" value="{{data.cityName}}" readonly="readonly"  />
+                    </div>
+                </div>
+                <div class="itemInput">
+                    <div class="key">车主手机号</div>
+                    <div class="value">
+                        <input type="text" value="{{data.mobile}}" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        {{if data.orderStatus == 0 || data.orderStatus ==1 }}
+            <div class="items item_info">
+                <div class="itemInput">
+                    <div class="key">保险金额</div>
+                    <div class="value f_org">￥{{(data.totalPrice || 0).toFixed(2)}}</div>
+                </div>
+                <div class="itemInput">
+                    <div class="key">交强险+车船税</div>
+                    <div class="value">￥{{((data.jqxPrice || 0)*1 + (data.ccsPrice || 0)*1).toFixed(2)}}</div> 
+                </div>
+                <div class="itemInput">
+                    <div class="key">商业险+其他</div>
+                    <div class="value">￥{{((data.szxPrice || 0)*1 + (data.szxBjmpPrice || 0)*1 + (data.csxPrice || 0)*1 + (data.csxBjmpPrice || 0)*1 + (data.hfxPrice || 0)*1 + (data.hfxBjmpPrice || 0)*1 + (data.zrxPrice || 0)*1 + (data.zrxBjmpPrice || 0)*1 + (data.ckxPrice || 0)*1 + (data.ckxBjmpPrice || 0)*1 + (data.sjzrxPrice || 0)*1 + (data.sjzrxBjmpPrice || 0)*1 + (data.dqxPrice || 0)*1 + (data.dqxBjmpPrice || 0)*1 + (data.ssxPrice || 0)*1 + (data.ssxBjmpPrice || 0)*1 + (data.blxPrice || 0)*1 + (data.blxBjmpPrice || 0)*1).toFixed(2)}}</div> 
+                </div>
+            </div>
+        {{/if}}
+        {{if data.payStatus==1 && data.insureInfo}}
+            <div class="items item_info itemH">
+                 <div class="itemInput">
+                    <div class="key f_dk">配送信息</div>
+                    {{if data.express}}<div class="value">运单号:{{data.express.orderNum}}</div>{{/if}}
+                </div>
+            </div>
+            <div class="orderInfo">
+                <h3>{{data.insureInfo.peisongName}}({{data.insureInfo.peisongMobile}})</h3>
+                <p>{{data.insureInfo.peisongAddress}}</p>
+                {{if data.express}}
+                    {{if data.express.company}}
+                        <p>由{{data.express.company}}于{{data.express.expressTime}}配送</p>
+                    {{else}}
+                        <p>由{{data.express.company}}配送</p>
+                    {{/if}}
+                {{/if}}
+                 
+            </div>
+            {{if data.payinfo}}
+                <div class="items item_info itemH">
+                     <div class="itemInput">
+                        <div class="key f_dk">支付信息</div>
+                    </div>
+                </div>
+                <div class="orderInfo">
+                    <h3>使用
+                        {{if data.payinfo.payWay == 1}}
+                            支付宝手机支付
+                        {{else if data.payinfo.payWay == 2}}
+                            支付宝wap网页支付
+                        {{else if data.payinfo.payWay == 3}}
+                            银联手机支付
+                        {{else if data.payinfo.payWay == 4}}
+                            银联网页支付
+                        {{else if data.payinfo.payWay == 5}}
+                            余额支付
+                        {{else if data.payinfo.payWay == 6}}
+                            支付宝手机余额支付
+                        {{else if data.payinfo.payWay == 7}}
+                            支付宝wap网页余额支付
+                        {{else if data.payinfo.payWay == 8}}
+                            银联手机余额支付
+                        {{else if data.payinfo.payWay == 9}}
+                            银联网页余额支付
+                        {{else if data.payinfo.payWay == 10}}
+                            微信支付
+                        {{else if data.payinfo.payWay == 11}}
+                            微信余额支付
+                        {{else if data.payinfo.payWay == 12}}
+                            连连科技支付
+                        {{else if data.payinfo.payWay == 13}}
+                            连连科技网页支付
+                        {{else if data.payinfo.payWay == 14}}
+                            连连科技余额支付
+                        {{else if data.payinfo.payWay == 15}}
+                            连连科技网页余额支付
+                        {{else if data.payinfo.payWay == 16}}
+                            阿里百川支付
+                        {{else if data.payinfo.payWay == 17}}
+                             阿里百川余额支付
+                        {{/if}} 
+                    </h3>
+                    <p>{{data.payinfo.createTime}}</p>
+                </div>
+            {{/if}}
+        {{/if}}
+        {{if data.status==1 && (data.jqx || data.ccs || data.szx)}}
+        <div class="items items_h">
+            <div class="itemInput">
+                <div class="atc f_bk">投保项目</div>
+                <div class="ifos f_bk">投保细节</div>
+                <div class="pri f_bk">投保价格</div>
+            </div>
+        </div>
+        <div class="items {{if data.orderStatus == 0 || data.payStatus==0 }}orderdetail{{/if}}">
+            {{if data.jqx}}
+                <div class="itemInput">
+                    <div class="atc">交强险</div>
+                    <div class="ifos f_bk">投保</div>
+                    <div class="pri f_bk">￥{{data.jqxPrice || 0}}</div>
+                </div>
+            {{/if}}
+            {{if data.ccs}}
+                <div class="itemInput">
+                    <div class="atc">车船税</div>
+                    <div class="ifos f_bk">代缴</div>
+                    <div class="pri f_bk">￥{{data.ccsPrice || 0}}</div>
+                </div>
+            {{/if}}
+            {{if data.szx != 0}}
+                <div class="itemInput">
+                    <div class="atc">三者险</div>
+                    <div class="{{if data.szxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{data.szx/10000}}万{{if data.szxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.szxPrice || 0)*1 + (data.szxBjmpPrice || 0)*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.csx != 0}}
+                <div class="itemInput">
+                    <div class="atc">车损险</div>
+                    <div class="{{if data.csxBjmp}}ifo{{else}}ifos{{/if}} f_bk">投保{{if data.csxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.csxPrice || 0)*1 + (data.csxBjmpPrice || 0 )*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.hfx != 0}}
+                <div class="itemInput">
+                    <div class="atc">划痕险</div>
+                    <div class="{{if data.hfxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{data.hfx}}元{{if data.hfxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.hfxPrice || 0)*1 + (data.hfxBjmpPrice || 0)*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.zrx != 0}}
+                <div class="itemInput">
+                    <div class="atc">自燃险</div>
+                    <div class="{{if data.zrxBjmp}}ifo{{else}}ifos{{/if}} f_bk">投保{{if data.zrxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.zrxPrice || 0)*1 + (data.zrxBjmpPrice || 0)*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.ckx != 0}}
+                <div class="itemInput">
+                    <div class="atc">乘客险</div>
+                    <div class="{{if data.ckxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{if data.ckx < 10000}}{{data.ckx}}元{{else}}{{data.ckx/10000}}万{{/if}}{{if data.ckxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.ckxPrice || 0)*1 + (data.ckxBjmpPrice || 0)*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.sjzrx != 0}}
+                <div class="itemInput">
+                    <div class="atc">司机险</div>
+                    <div class="{{if data.sjzrxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{if data.sjzrx < 10000}}{{data.sjzrx}}元{{else}}{{data.sjzrx/10000}}万{{/if}}{{if data.sjzrxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.sjzrxPrice || 0)*1 + (data.sjzrxBjmpPrice || 0)*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.dqx != 0}}
+                <div class="itemInput">
+                    <div class="atc">盗抢险</div>
+                    <div class="{{if data.dqxBjmp}}ifo{{else}}ifos{{/if}} f_bk">投保{{if data.dqxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.dqxPrice || 0)*1 + (data.dqxBjmpPrice || 0)*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.ssx != 0}}
+                <div class="itemInput">
+                    <div class="atc">涉水险</div>
+                    <div class="{{if data.ssxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{data.ssx/10000}}万{{if data.ssxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.ssxPrice || 0)*1 + (data.ssxBjmpPrice|| 0 )*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.blx != 0}}
+                <div class="itemInput">
+                    <div class="atc">玻璃险</div>
+                    <div class="{{if data.blxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{if data.blx == 1}}国产玻璃{{else}}进口玻璃{{/if}}{{if data.blxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                    <div class="pri f_bk">￥{{(data.blxPrice || 0)*1 + (data.blxBjmpPrice|| 0 )*1}}</div>
+                </div>
+            {{/if}}
+            {{if data.orderStatus == 0}}
+                <div class="updateInsure action">
+                    <input type="button" class="btn btn-next updateBtn" value="修改投保方案">
+                </div>
+            {{else}}
+                {{if !data.insureInfo}}
+                    {{if data.payStatus == 1}}
+                        <div class="action">
+                            <input type="button" class="btn btn-next addressBtn" value="填写配送信息">
+                        </div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </div>
+        {{if data.orderStatus == 0 || data.payStatus==0 }}
+            <div class="sendPrvice">
+                <div class="top">
+                    <div class="left">
+                        <div class="box">
+                            <p class="body1 f_12"><span>核保价格</span>(由{{data.baoxianCompanyName}}官方提供)</p>
+                            <p class="price">￥{{data.totalPrice}}</p>
+                            <p class="caption"></p>  
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="action">
+                            <input type="button" data-id="{{data.baoxianUnderwritingReportId}}" class="btn btn-next" name="saveOrders" value="{{if data.orderStatus==0}}在线下单{{else if data.orderStatus == 1}}在线支付{{/if}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">您有100元保险抵用券，下单支付时可以使用</div>
+            </div>
+        {{/if}}
+        {{else if data.status!=1 && data.syx}}
+             <div class="items items_h items_ofs">
+                <div class="itemInput">
+                    <div class="atc f_bk">投保项目</div>
+                    <div class="ifos f_bk">投保细节</div>
+                </div>
+            </div>
+            <div class="items items_ofs"> 
+            {{if data.szx != 0}}
+                <div class="itemInput">
+                    <div class="atc">三者险</div>
+                    <div class="{{if data.szxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{data.szx/10000}}万{{if data.szxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.csx != 0}}
+                <div class="itemInput">
+                    <div class="atc">车损险</div>
+                    <div class="{{if data.csxBjmp}}ifo{{else}}ifos{{/if}} f_bk">投保{{if data.csxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.hfx != 0}}
+                <div class="itemInput">
+                    <div class="atc">划痕险</div>
+                    <div class="{{if data.hfxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{data.hfx}}元{{if data.hfxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.zrx != 0}}
+                <div class="itemInput">
+                    <div class="atc">自燃险</div>
+                    <div class="{{if data.zrxBjmp}}ifo{{else}}ifos{{/if}} f_bk">投保{{if data.zrxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.ckx != 0}}
+                <div class="itemInput">
+                    <div class="atc">乘客险</div>
+                    <div class="{{if data.ckxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{if data.ckx < 10000}}{{data.ckx}}元{{else}}{{data.ckx/10000}}万{{/if}}{{if data.ckxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.sjzrx != 0}}
+                <div class="itemInput">
+                    <div class="atc">司机险</div>
+                    <div class="{{if data.sjzrxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{if data.sjzrx < 10000}}{{data.sjzrx}}元{{else}}{{data.sjzrx/10000}}万{{/if}}{{if data.sjzrxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.dqx != 0}}
+                <div class="itemInput">
+                    <div class="atc">盗抢险</div>
+                    <div class="{{if data.dqxBjmp}}ifo{{else}}ifos{{/if}} f_bk">投保{{if data.dqxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.ssx != 0}}
+                <div class="itemInput">
+                    <div class="atc">涉水险</div>
+                    <div class="{{if data.ssxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{data.ssx/10000}}万{{if data.ssxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+            {{if data.blx != 0}}
+                <div class="itemInput">
+                    <div class="atc">玻璃险</div>
+                    <div class="{{if data.blxBjmp}}ifo{{else}}ifos{{/if}} f_bk">{{if data.blx == 1}}国产玻璃{{else}}进口玻璃{{/if}}{{if data.blxBjmp}}<br><span class="caption">(不计免赔)</span>{{/if}}</div>
+                </div>
+            {{/if}}
+        </div>
+        {{/if}}
+    </script>
+    <script data-main="js/underWriting" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

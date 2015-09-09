@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-车猫Uber</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/uber.css" />
+</head>
+
+<body ontouchstart="">
+    <div class="container" id="mainBox"></div>
+    <script type="text/html" id="uberTemplate">
+        <div class="banner">
+            <img src="images/uber_head.png" />
+        </div>
+        <form>
+            <div class="item">
+                <div class="itemInput">
+                    <div class="value">
+                        <input type="text" name="name" placeholder="请输入您的姓名" data-require="true" data-null="请输入您的姓名" />
+                    </div>
+                </div>
+                <div class="itemInput">
+                    <div class="value">
+                        <input type="text" name="tel" placeholder="请输入您的联系电话" data-require="true" data-error="电话号码格式错误" data-null="请输入您的联系电话" data-rule="phoneReg" />
+                    </div>
+                </div>
+                <div class="itemInput">
+                    <div class="value ac">
+                        <span class="hd active">沪牌</span>
+                        <span class="hd">非沪牌</span>
+                        <input type="hidden" name="isLocalLicense" value="1">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="action">
+            <input type="button" class="btn btn-next" name="sendCarInfo" value="申请Uber司机，赢取150元红包" />
+        </div>
+        <div class="infos">
+            <h3>活动规则</h3>
+            <p>
+                1、已注册Uber车主后，推荐身边好友加入Uber拼车平台。<br>
+                2、推荐唯一凭证：好友扫描Uber司机端‘我的二维码’。<br>
+                3、好友成功做满10单，则推荐人与被推荐人均可获得150元推荐奖励。<br>
+                4、150元红包与橙牛无关，该活动最终解释权归Uber所有。
+            </p>
+        </div>
+    </script>
+    <script type="text/html" id="successTemplate">
+        <div class="success">
+            <img src="images/success.png" height="80" width="80" />
+            <h3 class="body1">我们已收到您的申请</h3>
+            <p class="caption lines">请耐心等待，Uber将主动联系您</p>
+            <h1><img src="images/uber.png" height="48" width="48" ></h1>
+            <p class="caption">与Uber合作，自己做老板</p>
+        </div>
+    </script>
+    <script data-main="js/uber" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

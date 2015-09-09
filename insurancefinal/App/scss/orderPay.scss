@@ -1,0 +1,96 @@
+@charset"utf-8";
+@import"com";
+@import"hd";
+.items {
+    padding: 0 16px;
+    background-color: white;
+}
+.pt10{
+    padding-top:10px;
+}
+.item_info{
+    .itemInput{
+        &:last-child{
+            border:none;
+        }
+    }
+    .key{
+        width:auto;
+    }
+    .value{
+        line-height:48px;
+        text-align:right;
+    }
+}
+.itemTit{
+    .itemInput{
+        border:none;
+    }
+    background:none;
+}
+.action{
+    padding-top:24px;
+}
+.action p{
+    padding:0 0 10px;
+    color:#989898;
+}
+.f_org{
+    color:#ff7f2f;
+}
+
+.paySuccess{
+    padding :15px 10px;
+    text-align:center;
+    line-height:20px;
+}
+
+.payWay{
+    dt{
+        line-height:40px;
+        padding:0 16px;
+    }
+    dd{
+        background:white;
+        padding:0 24px;
+        p{
+            line-height:48px;
+            border-bottom:1px solid #e8e8e8;
+            padding-left:30px;
+            position:relative;
+            &:after{
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 20px;
+                display: block;
+                background-image: url("../images/radio-uncheck.png");
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+        }
+        &.payOffline{
+            p:after{
+                background-image: url("../images/checkbox-checked.png");
+            }
+        }
+        &.active{
+            p:after{
+                background-image: url("../images/radio-checked.png");
+            }
+        }
+        &.payOffline.active{
+            p:after{
+                background-image: url("../images/checkbox-checkedr.png");
+            }
+        }
+        &:last-child{
+            p{
+                border:0 none;
+            }
+        }
+    }
+}

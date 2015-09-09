@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+    <title>汽车服务-橙牛车险管家-确认配送信息</title>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/delivery.css"/>
+</head>
+<body ontouchstart="">
+<div class="container" id="mainBox"></div>
+<script type="text/html" id="deliveryTmpl">
+    <div class="success">
+        <div class="pic"><img src="images/complete.png" alt=""></div>
+        <div class="info">
+            <h3>支付成功</h3>
+            <p>您已经成功支付{{data.totalPrice}}元</p>
+        </div>
+    </div>
+    {{if data.payStatus==1 && data.insureInfo}}
+    <div class="items item_info itemH">
+        <div class="itemInput">
+            <div class="key f_bk">配送信息</div>
+        </div>
+    </div>
+    <div class="items item_info">
+        <div class="itemInput">
+            <div class="key">收单人</div>
+            <div class="value">
+                <input type="text" value="{{data.insureInfo.peisongName}}  {{data.insureInfo.peisongMobile}}" readonly="readonly"  />
+            </div>
+        </div>
+        <div class="itemInput addressItem">
+                <div class="key">配送地址</div>
+                <div class="value">{{data.insureInfo.peisongAddress}}</div> 
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <form>
+        <div class="item">
+            <div class="key">收单人</div>
+            <div class="value">
+                <input type="text" name="name" placeholder="请输入收单人姓名" data-require="true" data-null="请输入收单人" maxlength="15"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="key">手机号码</div>
+            <div class="value"><input type="text" value="{{data.mobile}}" name="mobile" placeholder="请输入11位手机号码" data-require="true" data-null="请输入11位手机号" data-error="手机号码输入有误" data-rule="phoneReg" maxlength="11" /></div>
+        </div>
+        <div class="item item-city" id="cityItem">
+            <div class="key">配送地址</div>
+            <div class="value">
+                <select name="provinceCode" id="province" data-require="true" data-null="请输入11位手机号" >
+                    <option value="">省</option>
+                </select>
+                <select name="cityCode" id="city" data-require="true" data-null="请输入11位手机号" >
+                    <option value="">市</option>
+                </select>
+                <select name="townCode" id="district" data-require="true" data-null="请输入11位手机号">
+                    <option value="">区/县</option>
+                </select>
+            </div>
+        </div>
+        <div class="item">
+            <div class="key">地址详情</div>
+            <div class="value">
+                <input type="text" name="address" placeholder="请输入详细地址" data-require="true" data-null="请输入详细地址" />
+            </div>
+        </div>
+        <div class="action">
+            <input type="button" class="btn btn-next" name="saveAddress" value="提交配送信息"/>
+        </div>
+    </form>
+    {{/if}}
+</script>
+<script type="text/html" id="optionTmpl">
+     {{if list.length}}
+        {{each list as value index}}
+            <option value="{{value.cityCode}}">{{value.cityName}}</option>
+        {{/each}}
+    {{else}}
+        <option value="">{{if type='province'}}省{{else if type='city'}}市{{else if type='district'}}区/县{{/if}}</option>
+    {{/if}}
+</script>
+<script data-main="js/delivery" src="js/lib/require.min.js"></script>
+<!-- build:remove -->
+<script src="js/DazeWebviewJSBridge.js"></script>
+<script src="js/dazeJSObj.js"></script>
+<script src="js/test.js"></script>
+<!-- endbuild  -->
+</body>
+</html>

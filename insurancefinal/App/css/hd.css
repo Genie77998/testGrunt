@@ -1,0 +1,26 @@
+.insurfo {
+  padding: 10px 24px 10px 114px;
+  display: -webkit-box;
+  position: relative;
+  background: #4c4c4c;
+}
+.insurfo .body1 {
+  color: white;
+}
+.insurfo .pics {
+  width: 90px;
+  position: absolute;
+  top: 50%;
+  height: 30px;
+  left: 24px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.insurfo .pics img {
+  width: 80px;
+  height: 30px;
+}
+.insurfo .infos {
+  -webkit-box-flex: 1;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-在线车险</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body ontouchstart="" class="cardInfoBody">
+    <div class="container" id="mainBox"></div>
+    <script type="text/html" id="cardInfoTmpl">
+        <form>
+            <div class="insurfo">
+                <div class="pics"><img src="{{data.baoxianCompanyPic}}" height="30" width="80" ></div>
+                <div class="infos">
+                    <h3 class="body1">{{data.baoxianCompanyName}}</h3>
+                    <p class="caption">{{data.baoxianCompanyRemark}}</p>
+                </div>
+            </div>
+            <div class="tips">请补充核保必须信息</div>
+            <div class="items">
+                <div class="itemInput itemsfz" {{if data.idCardUrl}}data-click="true" {{else}}data-click="false" {{/if}}>
+                    <div class="key">车主身份证</div>
+                    <div class="value">
+                        <input type="text" readonly="" {{if data.idCardUrl}}value="已上传" {{/if}} class="ar" placeholder="点击上传车主身份证">
+                        <input type="hidden" {{if data.idCardUrl}}value="{{data.idCardUrl}}" {{/if}} name="idCardUrl"  data-require="true" data-null="请上传车主身份证">
+                    </div>
+                    <div class="dir">
+                        {{if data.idCardUrl}}
+                            <img src="{{data.idCardUrl}}" />
+                        {{else}}
+                            <img src="images/takephoto.png" />
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="view-tpl cardInfotips">
+                    <p><img src="images/information.png" alt="">查看身份证拍摄范本</p>
+                    <div class="tpl hidden">
+                        <div class="mask"></div>
+                        <div class="content">
+                            <img src="images/photo2.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="itemInput itemPhone">
+                    <div class="key">车主手机号</div>
+                    <div class="value">
+                        <input type="text" class="ar" data-rule="phoneReg" value="{{data.mobile}}" name="mobile" placeholder="请输入手机号" data-require="true" data-null="请输入手机号" data-error="手机号格式错误" />
+                    </div>
+                    <!-- <div class="dir"><p class="ac">更换</p></div> -->
+                </div>
+                <div class="itemInput itemGuohu">
+                    <div class="key">过户车</div>
+                    <div class="value">
+                        <input type="hidden" value="{{data.guohu || 0}}" name="guohu"/>
+                    </div>
+                    <div class="dir">
+                        <span class="ghzt{{if data.guohu}} active{{/if}}"></span>
+                    </div>
+                </div>
+                <div class="itembx active">
+                    <p>手机号为车主本人<br>所有投保人、被投保人、车主为同一人
+                    <input type="hidden" name="isone" value="1" data-require="true" data-null="确认所有信息是同一人" ></p>
+                </div>
+            </div>
+            <div class="action">
+                <input type="button" class="btn btn-next" id="goToInsure" value="下一步选择投保方案">
+            </div>
+            <div class="redbag">
+                <img src="images/redbag.png" alt="">核保即送100元保险抵用券，投保成功还可得投保礼包
+            </div>
+            <div class="reUpload hidden">
+                <div class="mask"></div>
+                <div class="content">
+                    <span class="closed"></span>
+                    <div class="imgBox">
+                        {{if data.idCardUrl}}
+                            <img src="{{data.idCardUrl}}" />
+                        {{else}}
+                            <img src="images/loading.gif" />
+                        {{/if}}
+                    </div>
+                    <div class="action">
+                        <input type="button" class="btn" value="重新上传">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </script>
+    <script data-main="js/cardInfo" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>
+
+

@@ -1,0 +1,18 @@
+<section class="wrap-select-city wrap-province" id="wrapProvince">
+    <dl id="gpsCity">
+        <dt class="tit">当前定位城市</dt>
+        <dd data-province="{{gpsCity.province}}" data-city_id="{{gpsCity.id}}">{{gpsCity.name||'定位失败'}}</dd>
+    </dl>
+    <dl id="directCities">
+        <dt class="tit">直辖市</dt>
+        {{each directCities as item}}
+        <dd data-city_id="{{item.id}}" data-province="{{item.province}}">{{item.name}}</dd>
+        {{/each}}
+    </dl>
+    <dl id="provinces">
+        <dt class="tit">省份</dt>
+        {{each provinces as item}}
+        <dd>{{item}}</dd>
+        {{/each}}
+    </dl>
+</section>

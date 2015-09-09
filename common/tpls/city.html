@@ -1,0 +1,9 @@
+<section class="wrap-select-city wrap-city" id="wrapCity">
+    <div class="mask"></div>
+    <dl class="list-city" id="city">
+        <dt>{{province}}</dt>
+        {{each city as item}}
+        <dd data-city_id="{{item.id}}" data-province="{{item.province}}">{{item.name}}</dd>
+        {{/each}}
+    </dl>
+</section>

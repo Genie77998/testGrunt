@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-选择城市</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/city.css" />
+</head>
+
+<body ontouchstart="">
+    <div class="container page-city" id="page">
+        <section class="provinces" id="provinces"></section>
+        <div class="mask hidden" id="mask"></div>
+        <section class="cities hidden" id="cities"></section>
+    </div>
+    <script type="text/html" id="provinceTmpl">
+        {{if provinces.length}}
+        <ul>
+            {{each provinces as item}}
+                {{if item.cityName == "浙江"}}
+                    <li data-id="{{item.cityCode}}">{{item.cityName}}</li>
+                {{/if}}
+            {{/each}}
+        </ul>
+        {{/if}}
+    </script>
+    <script type="text/html" id="cityTmpl">
+        {{if cities.length}}
+        <ul>
+            {{each cities as item}}
+            <li data-id="{{item.cityCode}}">{{item.cityName}}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </script>
+    <script data-main="js/city" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-确认支付信息</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/orderPay.css" />
+</head>
+
+<body ontouchstart="">
+    <div class="container" id="mainBox"></div>
+    <script type="text/html" id="orderPayTmpl">
+        <div class="insurfo">
+            <div class="pics"><img src="{{data.baoxianCompanyPic}}" height="30" width="80" ></div>
+            <div class="infos">
+                <h3 class="body1">{{data.baoxianCompanyName}}</h3>
+                <p class="caption">{{data.baoxianCompanyRemark}}</p>
+            </div>
+        </div>
+        <div class="pt10">
+            <div class="items item_info">
+                <div class="itemInput">
+                    <div class="key">保险金额</div>
+                    <div class="value f_org">￥{{(data.totalPrice || 0).toFixed(2)}}</div>
+                </div>
+                <div class="itemInput">
+                    <div class="key">交强险+车船税</div>
+                    <div class="value">￥{{((data.jqxPrice || 0)*1 + (data.ccsPrice || 0)*1).toFixed(2)}}</div> 
+                </div>
+                <div class="itemInput">
+                    <div class="key">商业险+其他</div>
+                    <div class="value">￥{{((data.szxPrice || 0)*1 + (data.szxBjmpPrice || 0)*1 + (data.csxPrice || 0)*1 + (data.csxBjmpPrice || 0)*1 + (data.hfxPrice || 0)*1 + (data.hfxBjmpPrice || 0)*1 + (data.zrxPrice || 0)*1 + (data.zrxBjmpPrice || 0)*1 + (data.ckxPrice || 0)*1 + (data.ckxBjmpPrice || 0)*1 + (data.sjzrxPrice || 0)*1 + (data.sjzrxBjmpPrice || 0)*1 + (data.dqxPrice || 0)*1 + (data.dqxBjmpPrice || 0)*1 + (data.ssxPrice || 0)*1 + (data.ssxBjmpPrice || 0)*1 + (data.blxPrice || 0)*1 + (data.blxBjmpPrice || 0)*1).toFixed(2)}}</div> 
+                </div>
+            </div>
+        </div>
+        {{if data.payStatus == 0}}
+            <div id="payHander">
+                <dl class="payWay">
+                    <dt>选择支付方式</dt>
+                    <dd data-type="5" class="payOffline"><p>余额支付(￥{{data.cashBalance}})</p></dd>
+                    <dd data-type="16" class="payOnline"><p>支付宝支付</p></dd>
+                    <dd data-type="12" class="payOnline"><p>银行卡支付</p></dd>
+                </dl>
+                <div class="action">
+                    <p class="ac">需支付{{(data.totalPrice || 0).toFixed(2)}}元</p>
+                    <input type="button" class="btn btn-next" name="goToPay" value="确认支付" />
+                </div>
+            </div>
+        {{else}}
+            <p class="paySuccess">您已经成功支付{{(data.totalPrice || 0).toFixed(2)}}元</p>
+            {{if !data.insureInfo}}
+                {{if data.payStatus == 1}}
+                    <div class="action">
+                        <input type="button" class="btn btn-next" name="saveAddress" value="填写配送地址">
+                    </div>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    </script>
+    <script data-main="js/orderPay" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

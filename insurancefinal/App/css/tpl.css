@@ -1,0 +1,70 @@
+.view-tpl {
+  background-color: white;
+  padding: 0 0 16px;
+}
+.view-tpl .tpl {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  z-index: 1;
+}
+.view-tpl .content {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  background: transparent;
+}
+.view-tpl .content img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.view-tpl p {
+  text-align: center;
+  line-height: 36px;
+  width: 100%;
+  color: #42a5f5;
+  height: 36px;
+  padding-top: 8px;
+  overflow: hidden;
+}
+.view-tpl p img {
+  height: 16px;
+  padding-right: 10px;
+  position: relative;
+  top: 50%;
+  margin-top: -9px;
+  vertical-align: top;
+}
+.view-tpl h3 {
+  padding: 46px 24px 15px;
+}
+
+.closed {
+  display: block;
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+  position: absolute;
+  right: -9px;
+  top: -9px;
+  background-color: white;
+  border-radius: 50%;
+  background-image: url(../images/closebanner.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+}

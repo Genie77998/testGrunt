@@ -1,0 +1,9 @@
+.idea
+node_modules
+dev
+zip
+.cache
+.scssc
+.sass-cache
+.map
+/config.rb

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-在线车险</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/insure.css" />
+</head>
+
+<body ontouchstart="">
+    <div class="container" id="mainBox"></div>
+    <script type="text/html" id="insureTmpl">
+         <form>
+            <div class="insurfo">
+                <div class="pics"><img src="{{data.baoxianCompanyPic}}" height="30" width="80" ></div>
+                <div class="infos">
+                    <h3 class="body1">{{data.baoxianCompanyName}}{{data.province}}</h3>
+                    <p class="caption">{{data.baoxianCompanyRemark}}</p>
+                </div>
+            </div>
+            <div class="items">
+                <div class="itemInput itemThree">
+                    <div class="key">交强险</div>
+                    <div class="value"><p class="itemzt">投保</p></div>
+                    <div class="dir" data-true="投保" data-false="不投保" data-click="false">
+                        <input type="hidden" name="jqx" value="true" />
+                        <span class="ghzt active"></span>
+                    </div>
+                </div>
+                <div class="itemInput itemThree">
+                    <div class="key">代缴车船税</div>
+                    <div class="value"><p class="itemzt">代缴</p></div>
+                    <div class="dir" data-true="代缴" data-false="不代缴" data-click="false">
+                        <input type="hidden" name="ccs" value="true" />
+                        <span class="ghzt active"></span>
+                    </div>
+                </div>
+                <div class="itemInput itemThree">
+                    <div class="key">商业险</div>
+                    <div class="value"><p class="itemzt">投保</p></div>
+                    <div class="dir" data-name="syx" data-true="投保" data-false="不投保" data-click="true">
+                        <input type="hidden" name="syx" value="true" />
+                        <span class="ghzt active"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="itemOther">
+                    <div class="itemInput">
+                        <div class="item_other">车损险</div>
+                        <div class="item_other">
+                            <select name="csx" data-default="1">
+                                <option value="0">不投保</option>
+                                <option value="1">投保</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico active" data-default="active">
+                            不计免赔
+                            <input type="hidden" name="csxBjmp" value="true" data-default="true"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">三者险</div>
+                        <div class="item_other">
+                            <select name="szx" data-default="300000">
+                                <option value="0">不投保</option>
+                                <option value="50000">5万</option>
+                                <option value="100000">10万</option>
+                                <option value="150000">15万</option>
+                                <option value="200000">20万</option>
+                                <option value="300000">30万</option>
+                                <option value="500000">50万</option>
+                                <option value="1000000">100万</option>
+                                <option value="1500000">150万</option>
+                                <option value="2000000">200万</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico active" data-default="active">
+                            不计免赔
+                            <input type="hidden" name="szxBjmp" value="true" data-default="true"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">盗抢险</div>
+                        <div class="item_other">
+                            <select name="dqx" data-default="0">
+                                <option value="0">不投保</option>
+                                <option value="1">投保</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico" data-default="">
+                            不计免赔
+                            <input type="hidden" name="dqxBjmp" value="false" data-default="false"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">司机险</div>
+                        <div class="item_other">
+                            <select name="sjzrx" data-default="10000">
+                                <option value="0">不投保</option>
+                                <option value="5000">5千/座</option>
+                                <option value="10000">1万/座</option>
+                                <option value="20000">2万/座</option>
+                                <option value="30000">3万/座</option>
+                                <option value="40000">4万/座</option>
+                                <option value="50000">5万/座</option>
+                                <option value="100000">10万/座</option>
+                                <option value="150000">15万/座</option>
+                                <option value="200000">20万/座</option>
+                                <option value="500000">50万/座</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico active" data-default="active">
+                            不计免赔
+                            <input type="hidden" name="sjzrxBjmp" value="true" data-default="true"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">乘客险</div>
+                        <div class="item_other">
+                            <select name="ckx" data-default="10000">
+                                <option value="0">不投保</option>
+                                <option value="5000">5千/座</option>
+                                <option value="10000">1万/座</option>
+                                <option value="20000">2万/座</option>
+                                <option value="30000">3万/座</option>
+                                <option value="40000">4万/座</option>
+                                <option value="50000">5万/座</option>
+                                <option value="100000">10万/座</option>
+                                <option value="150000">15万/座</option>
+                                <option value="200000">20万/座</option>
+                                <option value="500000">50万/座</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico active" data-default="active">
+                            不计免赔
+                            <input type="hidden" name="ckxBjmp" value="true" data-default="true"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">玻璃险</div>
+                        <div class="item_other">
+                            <select name="blx" data-default="0">
+                                <option value="0">不投保</option>
+                                <option value="1">国产玻璃</option>
+                                <option value="2">进口玻璃</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico hidden">
+                            不计免赔
+                            <input type="hidden" name="blxBjmp" value="false" data-default="false"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">自燃险</div>
+                        <div class="item_other">
+                            <select name="zrx" data-default="0">
+                                <option value="0">不投保</option>
+                                <option value="1">投保</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico" data-default="">
+                            不计免赔
+                            <input type="hidden" name="zrxBjmp" value="false" data-default="false"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">涉水险</div>
+                        <div class="item_other">
+                            <select name="ssx" data-default="0">
+                                <option value="0">不投保</option>
+                                <option value="10000">1万</option>
+                                <option value="20000">2万</option>
+                                <option value="30000">3万</option>
+                                <option value="50000">5万</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico hidden" data-default="">
+                            不计免赔
+                            <input type="hidden" name="ssxBjmp" value="false" data-default="false"/>
+                        </div>
+                    </div>
+                    <div class="itemInput">
+                        <div class="item_other">划痕险</div>
+                        <div class="item_other">
+                            <select name="hfx" data-default="0">
+                                <option value="0">不投保</option>
+                                <option value="2000">2000元</option>
+                                <option value="5000">5000元</option>
+                                <option value="10000">10000元</option>
+                                <option value="20000">20000元</option>
+                            </select>
+                        </div>
+                        <div class="item_other item_ico hidden" data-default="">
+                            不计免赔
+                            <input type="hidden" name="hfxBjmp" value="false" data-default="false"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action">
+                <input type="button" class="btn btn-next" id="goToInsure" value="立即核保，获取精准报价">
+                <p class="caption ac"><br></p>
+            </div>
+            <div class="redbag">
+                <img src="images/redbag.png" alt="">核保即送100元保险抵用券，投保成功还可得投保礼包
+            </div>
+        </form>
+    </script>
+    <script data-main="js/insure" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>
