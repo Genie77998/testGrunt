@@ -1,0 +1,13 @@
+{
+  "package":{
+    "id":10000018,
+    "name":"在线车险",
+    "version":"0.0.1.0",
+    "description":"汽车服务－在线车险",
+    "require":[],
+    "app-type":"web",
+    "depends":["login"],
+    "icon":"icon.png",
+    "entry":"index.html"
+  }
+}

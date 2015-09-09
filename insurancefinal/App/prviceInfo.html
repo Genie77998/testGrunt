@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-闪电报价</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/getPrvice.css" />
+</head>
+
+<body ontouchstart="">
+    <div class="container" id="mainBox"></div>
+    <script type="text/html" id="privceTemplate">
+        {{if data.length}}
+            <div class="pbox headChoose">
+                <ul>
+                    <li {{if keya==0}}class="active"{{/if}} {{if data[0].length == 0}}data-click="false"{{/if}}>基础版</li>
+                    <li {{if keya==1}}class="active"{{/if}} {{if data[1].length == 0}}data-click="false"{{/if}}>大众版</li>
+                    <li {{if keya==2}}class="active"{{/if}} {{if data[2].length == 0}}data-click="false"{{/if}}>豪华版</li>
+                </ul>
+            </div>
+            <div class="redbag">
+                <img src="images/redbag.png" alt="">核保即送100元保险抵用券，投保成功还可得投保礼包
+            </div>
+            <div class="resultBox pinfo">
+            {{each data as value index}}
+                <dl {{if index!=keya}}class="hidden"{{/if}} data-price="{{value.totalPrice || 0}}">
+                    <dd>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.csx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">车损险</div>
+                                    <div class="itp">{{if value.csx>0}}￥{{value.csx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.szx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">三者险</div>
+                                    <div class="itp">{{if value.szx>0}}￥{{value.szx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.dqx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">盗抢险</div>
+                                    <div class="itp">{{if value.dqx>0}}￥{{value.dqx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.ckx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">司乘险</div>
+                                    <div class="itp">{{if value.ckx>0}}￥{{value.ckx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.blx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">玻璃险</div>
+                                    <div class="itp">{{if value.blx>0}}￥{{value.blx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.zrx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">自燃险</div>
+                                    <div class="itp">{{if value.zrx>0}}￥{{value.zrx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items">
+                            <div class="itemInput arrow privceItem">
+                                <div class="choose">
+                                    <span class="radio {{if value.hfx>0}}active{{/if}}"></span>
+                                </div>
+                                <div class="dirs fb">
+                                    <div class="itn">划痕险</div>
+                                    <div class="itp">{{if value.hfx>0}}￥{{value.hfx}}{{else}}无{{/if}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            {{/each}}
+            </div>
+            <div class="sendPrvice">
+                <div class="top">
+                    <div class="left">
+                        <div class="box">
+                            <p class="price">￥{{data[keya].totalPrice}}</p>
+                            <p class="caption">参考价格</p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="action">
+                            <input type="button" class="btn btn-next" name="goInsure" value="立即核保，获取精准报价" />
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">免责声明：报价仅供参考，实际投保以核保后的价格为准</div>
+            </div>
+        {{/if}}
+    </script>
+    <script data-main="js/prviceInfo" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

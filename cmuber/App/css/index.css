@@ -1,0 +1,143 @@
+input, select {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+input:-moz-placeholder {
+  color: #ccc;
+}
+
+.banner {
+  width: 100%;
+  font-size: 0;
+}
+.banner img {
+  max-width: 100%;
+}
+
+.success {
+  padding: 50px 10px 20px;
+  text-align: center;
+}
+.success h3 {
+  padding-top: 16px;
+}
+.success .lines {
+  padding: 10px 0 24px;
+  position: relative;
+}
+.success .lines:after {
+  content: "";
+  height: 0;
+  border-bottom: 1px solid #e8e8e8;
+  width: 220px;
+  display: block;
+  bottom: 5px;
+  position: absolute;
+  left: 50%;
+  margin-left: -110px;
+}
+.success h1 {
+  line-height: 24px;
+  padding: 24px 0 12px;
+  color: #4c4c4c;
+  font-size: 16px;
+}
+.success h1 img {
+  padding-right: 8px;
+  vertical-align: middle;
+}
+
+/* item arrow */
+.banner {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.arrow {
+  position: relative;
+}
+.arrow:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 5px;
+  top: 50%;
+  margin-top: -10px;
+  background-image: url("../images/forward.png");
+  background-size: contain;
+}
+
+/* box size */
+.boxsizing, .itemInput input, .itemInput select {
+  box-sizing: border-box;
+}
+
+.item {
+  background: white;
+}
+
+.itemInput {
+  padding: 0 24px;
+  border-bottom: 1px solid #e8e8e8;
+  position: relative;
+  height: 48px;
+  display: -webkit-box;
+}
+.itemInput:last-child {
+  border: 0 none;
+}
+.itemInput.arrow {
+  padding-right: 30px;
+}
+.itemInput .key {
+  width: 96px;
+  color: #989898;
+  font-size: 14px;
+  height: 48px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-align: center;
+}
+.itemInput .value {
+  -webkit-box-flex: 1;
+}
+.itemInput .value .icon {
+  width: 24px;
+  vertical-align: middle;
+}
+.itemInput input, .itemInput select {
+  padding: 0 10px;
+  height: 48px;
+  font-size: 14px;
+  color: #4c4c4c;
+  width: 100%;
+}
+
+/* box layout */
+.flex-box {
+  display: -webkit-box;
+}
+
+/* btn */
+.action {
+  padding: 0px 16px 24px;
+}
+.action .btn {
+  color: white;
+}
+.action .btn-next {
+  background: #ff7e2e;
+}
+.action p {
+  padding: 8px 0 16px;
+}
+.action p a {
+  color: #989898;
+}
+.action .pad {
+  padding-top: 24px;
+}

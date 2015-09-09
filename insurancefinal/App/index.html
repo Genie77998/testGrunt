@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-在线车险</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body ontouchstart="">
+    <div class="container orderlist" id="mainBox"></div>
+    <script type="text/html" id="indexTemplate">
+        {{if type=="newOrder"}}
+        <form>
+            <div class="items">
+                <div class="itemInput arrow cityItem">
+                    <div class="key">行驶城市</div>
+                    <div class="value">
+                        <input type="text" data-code="{{data.cityCode}}" value="{{data.cityName}}" id="city" readonly name="cityName" placeholder="请选择行驶城市" data-require="true" data-null="请选择行驶城市" />
+                    </div>
+                </div>
+                <div class="itemInput arrow brandItem">
+                    <div class="key">车型</div>
+                    <div class="value">
+                        <input type="text" readonly value="{{data.vehicleModelName}}" data-code="{{data.vehicleModelCode}}" data-price="{{data.vehicleModelPrice}}" id="brand" name="vehicleModelCode" placeholder="请选择行车型" data-require="true" data-null="请选择行车型" />
+                    </div>
+                </div>
+                <div class="itemInput itemxsz" {{if data.drivingUrl}}data-click="true" {{else}}data-click="false" {{/if}}>
+                    <div class="key">行驶证</div>
+                    <div class="dir">
+                        {{if data.drivingUrl}}
+                            <img src="{{data.drivingUrl}}" />
+                        {{else}}
+                            <img src="images/takephoto.png" />
+                        {{/if}}
+                    </div>
+                    <div class="value">
+                        <input type="text" readonly {{if data.drivingUrl}}value="已上传" {{/if}} placeholder="点击上传行驶证正页" />
+                        <input type="hidden" {{if data.drivingUrl}}value="{{data.drivingUrl}}" {{/if}} name="drivingUrl" data-require="true" data-null="请上传行驶证" />
+                    </div>
+                </div>
+            </div>
+            <div class="view-tpl">
+                <p>
+                    <img src="images/information.png" alt="">查看行驶证范本?</p>
+                <div class="tpl hidden">
+                    <div class="mask"></div>
+                    <div class="content">
+                        <img src="images/photo1.jpg" />
+                    </div>
+                </div>
+                <h3 class="caption">
+                    *上传行驶证报价更精准
+                    <br>*通过行驶证认证即送价值199的全国救援服务
+                </h3>
+            </div>
+        </form>
+        <div class="action">
+            <input type="button" class="btn btn-next" id="goToInsure" value="闪电报价" />
+            <p class="caption ac">您提交的信息仅用于保险报价，请放心使用</p>
+        </div>
+        <div class="reUpload hidden">
+            <div class="mask"></div>
+            <div class="content">
+                <span class="closed"></span>
+                <div class="imgBox">
+                    {{if data.drivingUrl}}
+                        <img src="{{data.drivingUrl}}" />
+                    {{else}}
+                        <img src="images/loading.gif" />
+                    {{/if}}
+                </div>
+                <div class="action">
+                    <input type="button" class="btn" value="重新上传" />
+                </div>
+            </div>
+        </div>
+        {{else}}
+            <div class="myList">
+            {{each data as value index}}
+                <div data-index="{{index}}" class="items" data-btn="orderlist" data-baseinfoid={{value.baoxianBaseInfoId}}>
+                    <div class="itemInput itemInput_list">
+                        <div class="top">
+                            <div class="left">投保城市：{{value.cityName}}</div>
+                            {{if value.vehicleModelName}}
+                                <div class="right">{{(value.vehicleModelName).substr(0,10)}}</div>
+                            {{/if}}
+                        </div>
+                        <div class="mid">
+                            <div class="pics">
+                                <img src="{{value.baoxianCompanyPic}}" alt="">
+                            </div>
+                            <div class="dirs fb">
+                                <div class="left">
+                                    <p class="body1">{{value.baoxianCompanyName}}</p>
+                                    <p class="caption">{{value.baoxianCompanyRemark}}</p>
+                                </div>
+                                <div class="right">
+                                    {{if value.status==1}}
+                                        <p class="body1">￥{{value.totalPrice}}</p>
+                                    {{/if}}
+                                    <p {{if value.status==1}}class="caption"{{else}}class="org"{{/if}}>
+                                        {{if value.status==-1}}
+                                            核保失败
+                                        {{else if value.status==0}}
+                                            核保中
+                                        {{else}}
+                                            {{if value.payStatus == 0}}
+                                                核保成功
+                                            {{else}}
+                                                支付成功
+                                            {{/if}}
+                                        {{/if}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bot">
+                            <div class="left">提交时间：{{value.createTime.substr(0,16)}}</div>
+                            <div class="right">
+                                {{if value.status!=1}}
+                                    <span>查看详情</span>
+                                {{else}}
+                                    {{if value.orderStatus==0}}
+                                        <span>立即下单</span>
+                                    {{else}}
+                                        {{if value.payStatus == 0}}
+                                            <span>立即支付</span>
+                                        {{else}}
+                                            <span>查看详情</span>
+                                        {{/if}}
+                                    {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+            <div class="sendOrder">
+                <div class="action">
+                    <input type="button" class="btn btn-next" id="sendOrder" value="闪电报价" />
+                </div>
+            </div>
+        {{/if}}
+    </script>
+    <script data-main="js/index" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

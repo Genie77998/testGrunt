@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-车猫Uber</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/brand.css"/>
+</head>
+
+<body ontouchstart="">
+    <div class="container" id="mainBox"></div>
+    <section class="wrap-select wrap wrapBefore" id="wrapBrand">
+        <ul class="codezimu" id="zmCode"></ul>
+        <dl class="list list_left" id="carModel"></dl>
+        <dl class="list list_right" id="carNmae"></dl>
+    </section>
+    <script type="text/html" id="indexTemplate">
+        <div class="banner">
+            <img src="images/car_cat_banner.jpg" alt="">
+        </div>
+        <form>
+            <div class="item">
+                <div class="itemInput">
+                    <div class="key">姓名</div>
+                    <div class="value">
+                        <input type="text" name="name" value="{{data.name}}" placeholder="请输入" data-require="true" data-null="请输入您的姓名" />
+                    </div>
+                </div>
+                <div class="itemInput">
+                    <div class="key">联系电话</div>
+                    <div class="value">
+                        <input type="text" name="tel" value="{{data.tel}}" placeholder="请输入" data-require="true" data-error="电话号码格式错误" data-null="请输入您的联系电话" data-rule="phoneReg" />
+                    </div>
+                </div>
+                <div class="itemInput arrow carItem">
+                    <div class="key">车型</div>
+                    <div class="value">
+                        <input type="text" readonly {{if carInfo}}data-id="{{carInfo.vehicleId}}" data-name="{{carInfo.name}}" value="{{carInfo.fullname}}"{{/if}} name="vehicleFullName" placeholder="请选择" data-require="true" data-null="请选择您的车型" />
+                    </div>
+                </div>
+                <div class="itemInput">
+                    <div class="key">预售价</div>
+                    <div class="value">
+                        <input type="text" name="preSalePrice" value="{{data.preSalePrice}}" placeholder="请输入" data-require="true" data-null="请输入预售价" data-error="请输入正确的价格" data-rule="privce" />
+                    </div>
+                </div>
+                <div class="itemInput arrow cityItem">
+                    <div class="key">车源地</div>
+                    <div class="value">
+                        <select name="location">
+                            {{each lists as value index}}
+                                <option data-citycode="{{value.city_code}}" value="{{value.city_name}}">{{value.city_name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="action">
+            <p class="caption ac">请确保以上信息的准确性，方便车猫顾问为您服务</p>
+            <input type="button" class="btn btn-next" name="sendCarInfo" value="我要卖车" />
+            <p class="caption ac pad"><a href="tel:4001-666-556">车猫服务热线：4001-666-556</a></p>
+        </div>
+    </script>
+    <script type="text/html" id="successTemplate">
+        <div class="success">
+            <img src="images/success.png" height="80" width="80" />
+            <h3 class="body1">我们已收到您的资料</h3>
+            <p class="caption lines">请耐心等待，车猫顾问将主动联系您</p>
+            <h1><img src="images/car_cat.png" height="24" width="24" >二手车交易平台</h1>
+            <p class="caption">全程不收取佣金，一对一顾问服务</p>
+        </div>
+    </script>
+    <script type="text/html" id="queryzmCode">
+        {{if data.length}}
+            {{each data as item}}
+            <li data-code="{{item}}">{{item}}</li>
+            {{/each}}
+        {{/if}}
+        </script>
+        <script type="text/html" id="querycarModel">
+        {{if data.length}}
+            {{each data as value index}}
+                <dt data-code="{{value.code}}">{{value.code}}</dt>
+                {{each data[index].data as item key}}
+                    <dd data-index="{{index}}" data-code="{{value.code}}" data-key="{{key}}">{{item.name}}</dd>
+                {{/each}}
+            {{/each}}
+        {{/if}}
+        </script>
+        <script type="text/html" id="querycarNmae">
+        {{if data.length}}
+            {{each data as value index}}
+                <dd data-classfy="{{value.classfy}}" data-id="{{value.id}}">{{value.name}}</dd>
+            {{/each}}
+        {{/if}}
+    </script>
+    <script data-main="js/index" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

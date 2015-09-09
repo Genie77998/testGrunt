@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <title>汽车服务-橙牛车险管家-选择车型</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/brand.css" />
+</head>
+<body ontouchstart="">
+    <div class="container" id="mainBox">
+        <form onsubmit="return false">
+            <div class="searchbox">
+                <div class="rol">
+                    <input type="text" class="key" id="keyword" placeholder="推荐使用行驶证上的品牌编号" />
+                </div>
+                <div class="rol" id="searchBtn">
+                    <img src="images/search.png" />
+                </div>
+            </div>
+        </form>
+        <div class="view-tpl" id="tips">
+            <p><img src="images/information.png" alt="">如何找到品牌编号?</p>
+                <img src="images/photo3.jpg" width="100%" />
+            <!-- <div class="tpl hidden">
+                <div class="mask"></div>
+                <div class="content">
+                    <img src="images/photo3.jpg" />
+                </div>
+            </div> -->
+        </div>
+        <div class="resultbox" id="resultBox"></div>
+        <div class="tips hidden">没找到？直接输入购车价格</div>
+        <div class="otherPrivce hidden">
+            <div class="mask"></div>
+            <div class="content">
+                <span class="closed"></span>
+                <div class="inputBox">
+                    <input type="text" placeholder="万元">
+                </div>
+                <div class="action">
+                    <input type="button" class="btn" value="确定" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="brandListTmpl">
+        <dl>
+            {{if list.length}}
+                <dt>
+                    <div class="left">车型</div>
+                    <div class="right">参考价格（不含税价）</div>
+                </dt>
+               {{each list as value index}}
+                <dd data-code="{{value.vehicleCode}}" data-price="{{value.price*1}}" data-name="{{value.standardName}}">
+                    <div class="infos">
+                        {{if value.aliasName}}
+                            <h3 class="body1">{{value.brandName}}</h3>
+                            <h4>{{value.aliasName}}</h4>
+                        {{else}}
+                            <h2 class="body1">{{value.brandName}}</h2>
+                        {{/if}}
+                    </div>
+                    <div class="price{{if !value.aliasName}} noName{{/if}}">￥{{value.price*1}}</div>
+                </dd>
+                {{/each}}
+            {{/if}}
+        </dl>
+        <div class="action hidden">
+            <input type="button" class="btn btn-next" name="readyMore" value="查看更多" />
+        </div>
+    </script>
+    <script type="text/html" id="moreList">
+        {{each list as value index}}
+            <dd data-code="{{value.vehicleCode}}" data-price="{{value.price*1}}" data-name="{{value.standardName}}">
+                <div class="infos">
+                    {{if value.aliasName}}
+                        <h3 class="body1">{{value.brandName}}</h3>
+                        <h4>{{value.aliasName}}</h4>
+                    {{else}}
+                        <h2 class="body1">{{value.brandName}}</h2>
+                    {{/if}}
+                </div>
+                <div class="price{{if !value.aliasName}} noName{{/if}}">￥{{value.price*1}}</div>
+            </dd>
+        {{/each}}
+    </script>
+    <script data-main="js/brand" src="js/lib/require.min.js"></script>
+    <!-- build:remove -->
+    <script src="js/DazeWebviewJSBridge.js"></script>
+    <script src="js/dazeJSObj.js"></script>
+    <script src="js/test.js"></script>
+    <!-- endbuild  -->
+</body>
+
+</html>

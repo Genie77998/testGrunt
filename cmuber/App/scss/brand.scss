@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+.wrap-select {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    dd{
+        padding:10px 30px 10px 15px;
+        line-height: 20px;
+        background: white;
+        box-sizing: border-box;
+        border-top: #ececec 1px solid;
+        position:relative;
+      &.active,&:active {
+          color: #ff7e2e;
+          &:after{
+            color:#808080;
+          }
+      }
+      &:nth-child(1) {
+          border: none;
+      }
+      &:after{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        background-image: url(../images/forward.png);
+        background-repeat: no-repeat;
+        background-size: 14px auto;
+        background-position: center center;
+      }
+    }
+    dt{
+      padding:10px 30px 10px 15px;
+      line-height: 20px;
+      background: white;
+      box-sizing: border-box;
+      border-top: #ececec 1px solid;
+      &:nth-child(1) {
+          border: none;
+      }
+    }
+}
+
+.wrap {
+    display:none;
+    background:#f1f1f1;
+    height: 100%;
+    top: 0;
+    right: 0;
+    .list{
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    .codezimu{
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: absolute;
+      z-index: 3;
+      width:30px;
+      left:0;
+      top:0;
+      background:white;
+      li{
+        width:100%;
+        line-height:24px;
+        height:24px;
+        overflow:hidden;
+        text-align:center;
+        &.active{
+          color:#ff7e2e;
+        }
+      }
+    }
+    .list_right {
+        top: 0;
+        right: 0;
+    }
+    .list_left {
+        top: 0;
+        left: 0;
+    }
+    .list_right dd{
+      &:after{
+        display:none;
+      }
+      padding-right:10px;
+      background:#f1f1f1;
+    }
+}
+
+.wrapBefore{
+  .list_right{
+    width:45%
+  }
+  .list_left{
+    width:55%;
+    box-sizing: border-box;
+    padding-left:30px;
+  }
+}

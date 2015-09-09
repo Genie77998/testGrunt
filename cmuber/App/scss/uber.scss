@@ -1,0 +1,103 @@
+@import "com";
+/* box size */
+body{
+    background:url("../images/background_grid.png") repeat;
+}
+.boxsizing {
+    box-sizing: border-box;
+}
+
+.item{
+    padding:16px 16px 0;
+}
+
+.itemInput {
+    background:white;
+    position: relative;
+    height: 56px;
+    padding:0 24px;
+    display: -webkit-box;
+    .key {
+        width: 72px;
+        color: #fff;
+        font-size: 14px;
+        height: 48px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-align: center;
+    }
+    .value {
+        -webkit-box-flex: 1;
+    }
+    .hd{
+        display: -webkit-inline-box;
+        height:56px;
+        line-height:56px; 
+        color:#989898;
+        font-size:14px;
+        position:relative;
+        padding-right:24px;
+        padding-left:28px;
+        &:after{
+            display:block;
+            width:18px;
+            height:18px;
+            background-image:url('../images/option_tick-off.png');
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            content:"";
+            top:50%;
+            margin-top:-9px;
+            position:absolute;
+            left:0;
+        }
+        &.active{
+            &:after{
+                background-image:url('../images/option_tick-on.png')
+            }
+        }
+    }
+    input,select {
+        text-align:center;
+        padding: 0 16px;
+        border-bottom:1px solid #e8e8e8;
+        @extend .boxsizing;
+        height: 56px;
+        font-size:14px;
+        color:#4c4c4c;
+        width: 100%;
+        background:white; 
+    }
+}
+/* box layout */
+
+.flex-box {
+    display: -webkit-box;
+}
+/* btn */
+
+.action {
+    padding: 16px 16px 20px;
+    .btn {
+        color: white;
+    }
+    .btn-next {
+        background: #1fbad6;
+    }
+}
+
+.infos{
+    padding:0 30px 24px;
+    h3{
+        line-height:36px;
+        text-align:center;
+        color:#1fbad6;
+        font-size:14px;
+        padding-bottom:10px;
+    }
+    p{
+        line-height:20px;
+        font-size:12px;
+        color:#989898;
+    }
+}

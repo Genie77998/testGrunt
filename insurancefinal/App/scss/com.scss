@@ -1,0 +1,125 @@
+/* item arrow */
+
+.redbag {
+    display:none;
+    img {
+        height: 20px;
+        vertical-align: top;
+    }
+    line-height:20px;
+    color:#ff7f2f;
+    font-size:10px;
+    padding:5px 10px;
+    background:#e8e8e8;
+}
+input {
+    outline: none;
+}
+input::-webkit-input-placeholder {
+    color:#989898;
+}
+input:-moz-placeholder {
+    color:#989898; 
+}
+.arrow {
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        right: 3px;
+        top: 50%;
+        margin-top: -7px;
+        background-image: url("../images/icon-right.png");
+        background-size: contain;
+    }
+}
+/* box size */
+
+.boxsizing {
+    box-sizing: border-box;
+}
+.itemInput {
+    &.arrow {
+        padding-right: 30px;
+    }
+    position: relative;
+    height: 48px;
+    border-bottom: #e6e6e6 1px solid;
+    display: -webkit-box;
+    .key {
+        width: 72px;
+        color: #989898;
+        font-size: 14px;
+        height: 48px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-align: center;
+    }
+    .value {
+        -webkit-box-flex: 1;
+        // overflow: hidden; 
+        .icon {
+            width: 24px;
+            vertical-align: middle;
+        }
+    }
+    .dir {
+        width: 44px;
+        height: 48px;
+        line-height:48px;
+        position: relative;
+        display: block;
+        img {
+            vertical-align: top;
+            position: relative;
+            height: 32px;
+            width: 32px;
+            top: 50%;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -16px;
+        }
+    }
+    input {
+        padding: 0 10px;
+        @extend .boxsizing;
+        height: 48px;
+        width: 100%;
+    }
+    .input {
+        height: 48px;
+        line-height: 48px;
+        color: #A9A9A9;
+    }
+}
+/* box layout */
+
+.flex-box {
+    display: -webkit-box;
+}
+/* btn */
+
+.action {
+    padding: 32px 16px 24px;
+    .btn {
+        color: white;
+    }
+    .btn-next {
+        background: #ff7e2e;
+    }
+    .btn-prev {
+        margin-top: 8px;
+        background: #ffb718;
+    }
+    .disabled{
+        background:#A9A9A9;
+    }
+    p {
+        padding-top: 10px;
+    }
+}
+.sendPrvice .top .right .action .btn{
+    border-radius:0;
+}

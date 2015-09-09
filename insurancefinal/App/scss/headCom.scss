@@ -1,0 +1,39 @@
+/* item arrow */
+.pbox{
+  padding:16px;
+}
+.fb {
+  display: -webkit-box;
+}
+.fbl{
+  -webkit-box-flex: 1;
+}
+.headChoose{
+  background:white;
+  padding-top:10px;
+  padding-bottom:10px;
+  ul{
+    li{
+      width:33.33%;
+      text-align:center;
+      line-height:32px;
+      box-sizing: border-box;
+      border:1px solid #ff7f2f;
+      border-right:0;
+      color:#ff7f2f;
+      position: relative;
+      &:first-child{
+        border-radius:10px 0 0 10px;
+      }
+      &:last-child{
+        border-radius:0 10px 10px 0;
+        border-right:1px solid #ff7f2f;
+      }
+      &.active{
+        color:white;
+        background:#ff7f2f;
+      }
+    }
+    @extend .fb;
+  }
+}

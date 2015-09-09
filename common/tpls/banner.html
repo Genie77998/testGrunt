@@ -1,0 +1,10 @@
+{{if list.length}}
+<div class="swiper-wrapper">
+    {{each list as item}}
+    <div class="swiper-slide" data-id="{{item.id}}" data-identity="{{item.identity}}"><img style="display: block;width: 100%;" src="{{item.imgUrl}}"/>
+    </div>
+    {{/each}}
+</div>
+<!-- Add Pagination -->
+<div class="swiper-pagination"></div>
+{{/if}}
